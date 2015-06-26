@@ -30,9 +30,11 @@ ActiveAdmin.register Beer do
     end
 
     panel 'Available Establishmens' do
-      attributes_table_for beer do
-        row :establishments do
-          beer.establishments.pluck(:name).join '; '
+      attributes_table_for beer do        
+        beer.statuses.each do |s|
+          row s.establishment.name do
+            link_to(Status.status_values[s.status.to_s], edit_admin_status_path(s), class: "status_tag #{Status.status_values[s.status.to_s].downcase}")
+          end
         end
       end
     end

@@ -17,6 +17,10 @@
 //   .status_tag { background: #6090DB; }
 
 .status_tag {
+
+  color: white !important;
+  text-decoration: none !important;
+    
   &.empty {
     opacity: 0.5;
     background: red;
