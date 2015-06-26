@@ -12,4 +12,14 @@ ActiveAdmin.register Establishment do
       end
     end
   end
+
+  form do |f|
+    f.inputs "Beers" do
+      f.input :name
+      f.input :address
+    end
+
+    f.actions
+  end
+
 end
