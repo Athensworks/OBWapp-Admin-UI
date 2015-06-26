@@ -10,6 +10,8 @@ ActiveAdmin.register Status do
     column :status do |s|
       status_tag Status.status_values[s.status.to_s]
     end
+    column :reported_out_count, sortable: true
+    column :last_out_update, sortable: true
     actions
   end
   
