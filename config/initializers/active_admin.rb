@@ -139,7 +139,12 @@ ActiveAdmin.setup do |config|
   # Active Admin resources and pages from here.
   #
   # config.before_filter :do_something_awesome
-
+  config.before_filter do
+    authenticate_or_request_with_http_basic('Administration') do |username, password|
+      username == ENV["ADMIN_USERNAME"] && password == ENV["ADMIN_PASSWORD"]
+    end
+  end
+  
   # == Setting a Favicon
   #
   # config.favicon = 'favicon.ico'
