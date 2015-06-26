@@ -8,8 +8,19 @@ ActiveAdmin.register_page "Dashboard" do
       column do
         panel "Overall Stats" do
           ul do
-            li "Liked beers: #{Like.liked.count}"
-            li "Favoried beers: #{Like.favorited.count}"
+            li "Total Establishments: #{Establishment.count}"
+            li "Total Beers: #{Beer.count}"
+            li "Liked Beers: #{Like.liked.count}"
+            li "Favoried Beers: #{Like.favorited.count}"
+          end
+        end
+        
+        panel "Beer Status" do
+          ul do
+            li link_to "Total Untapped Beers: #{Status.untapped.count}", admin_statuses_path(scope: 'untapped')
+            li link_to "Total Tapped Beers: #{Status.tapped.count}", admin_statuses_path(scope: 'tapped')
+            li link_to "Total Empty Beers: #{Status.empty.count}", admin_statuses_path(scope: 'empty')
+            li link_to "Total Empty Reported Beers: #{Status.empty_reported.count}", admin_statuses_path(scope: 'empty_reported')
           end
         end
       end
