@@ -27,6 +27,8 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'devise'
 
 gem 'mysql2'
+
+gem 'geocoder'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
