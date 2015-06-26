@@ -7,6 +7,9 @@ ActiveAdmin.register Status do
     id_column
     column :establishment
     column :beer
+    column :status do |s|
+      status_tag Status.status_values[s.status.to_s]
+    end
     actions
   end
   
@@ -14,13 +17,21 @@ ActiveAdmin.register Status do
     inputs 'Details' do
       input :establishment
       input :beer
-      input :status, as: :radio, collection: STATUS_OPTIONS
+      input :status, as: :radio, collection: Status.status_options
       input :last_out_update, as: :string, :input_html => { :disabled => true }
       input :reported_out_count, :input_html => { :disabled => true }
     end
 
     actions
   end
+  
+  scope :unknown
+  scope :untapped
+  scope :tapped
+  scope :empty_reported
+  scope :empty
+  scope :cancelled
+  
     
   controller do
     before_save do |status|
