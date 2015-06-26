@@ -1,5 +1,9 @@
 ActiveAdmin.register Beer do
-  permit_params :name, :brewery, :ibu, :abv, :limited_release, :description, :rate_beer_id
+  controller do
+    def permitted_params
+      params.permit!
+    end
+  end
 
   index do
     id_column
@@ -13,6 +17,27 @@ ActiveAdmin.register Beer do
     actions
   end
 
+  show do
+    panel 'Beer' do
+      attributes_table_for beer do
+        row :name
+        row :brewery
+        row :ibu
+        row :abv
+        row :limited_release
+        row :rate_beer_id
+      end
+    end
+
+    panel 'Available Establishmens' do
+      attributes_table_for beer do
+        row :establishments do
+          beer.establishments.pluck(:name).join '; '
+        end
+      end
+    end
+  end
+
   form do |f|
     f.inputs "Beers" do 
       f.input :name
@@ -23,6 +48,11 @@ ActiveAdmin.register Beer do
       f.input :description
       f.input :rate_beer_id
     end
+
+    f.inputs 'Available Establishments' do
+      f.input :available_establishments, as: :check_boxes, label: 'Serving Establishments', collection: Establishment.all
+    end
+
     f.actions
   end
 
