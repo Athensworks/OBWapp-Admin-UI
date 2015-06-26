@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.datetime "last_report_update"
   end
 
-  create_table "statuses", id: false, force: :cascade do |t|
+  create_table "statuses", force: :cascade do |t|
     t.integer  "establishment_id",   limit: 4
     t.integer  "beer_id",            limit: 4
     t.integer  "status",             limit: 1
