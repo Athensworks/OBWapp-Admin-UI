@@ -17,8 +17,8 @@ ActiveAdmin.register Status do
   
   form do |f|
     inputs 'Details' do
-      input :establishment
-      input :beer
+      input :establishment, :input_html => { :disabled => true }
+      input :beer, :input_html => { :disabled => true }
       input :status, as: :radio, collection: Status.status_options
       input :last_out_update, as: :string, :input_html => { :disabled => true }
       input :reported_out_count, :input_html => { :disabled => true }
