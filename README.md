@@ -4,8 +4,12 @@ ActiveAdmin-based web interface for administering the Ohio Brew Week backend
 
 ## Required Setup
 
-Need to set two environment variables:
-`ADMIN_USERNAME=`
-`ADMIN_PASSWORD=`
+Need to set some environment variables:
 
-Need to copy `config/database.yml.example` to `config/database.yml` and modify appropriately
+* `ADMIN_USERNAME=`
+* `ADMIN_PASSWORD=`
+* `DB_NAME=`
+* `DB_USERNAME=`
+* `DB_PASSWORD=`
+* `DB_HOST=`
+* `DB_PORT=`
