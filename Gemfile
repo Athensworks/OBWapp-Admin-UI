@@ -37,6 +37,7 @@ gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'rollbar', '~> 1.2.7'
 
 group :production do
   gem 'rails_12factor'
