@@ -28,8 +28,8 @@ ActiveAdmin.register Beer do
         row :rate_beer_id
       end
     end
-
-    panel 'Available Establishmens' do
+    
+    panel 'Available Establishments' do
       attributes_table_for beer do        
         beer.statuses.each do |s|
           row s.establishment.name do
@@ -50,9 +50,11 @@ ActiveAdmin.register Beer do
       f.input :description
       f.input :rate_beer_id
     end
-
-    f.inputs 'Available Establishments' do
-      f.input :available_establishments, as: :check_boxes, label: 'Serving Establishments', collection: Establishment.all
+    
+    if beer.persisted?
+      f.inputs 'Available Establishments' do
+        f.input :available_establishments, as: :check_boxes, label: 'Serving Establishments', collection: Establishment.all
+      end
     end
 
     f.actions
