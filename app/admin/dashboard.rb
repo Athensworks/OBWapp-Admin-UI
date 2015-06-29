@@ -10,8 +10,8 @@ ActiveAdmin.register_page "Dashboard" do
           ul do
             li "Total Establishments: #{Establishment.count}"
             li "Total Beers: #{Beer.count}"
-            li "Liked Beers: #{Like.liked.count}"
-            li "Favoried Beers: #{Like.favorited.count}"
+            li "Tasted Beers: #{Like.tasted.count}"
+            li "Favorited Beers: #{Like.favorited.count}"
           end
         end
         
