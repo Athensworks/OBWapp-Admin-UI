@@ -1,7 +1,7 @@
 ActiveAdmin.register Status do
   permit_params :establishment_id, :beer_id, :status
   
-  actions :all, except: [:destroy]
+  actions :all, except: [:destroy, :new, :create]
 
   index do
     id_column
