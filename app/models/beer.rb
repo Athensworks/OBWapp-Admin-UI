@@ -1,5 +1,5 @@
 class Beer < ActiveRecord::Base
-  has_many :statuses
+  has_many :statuses, dependent: :destroy
   has_many :establishments, through: :statuses
 
   def available_establishments
