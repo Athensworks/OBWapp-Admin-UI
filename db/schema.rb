@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.string   "device_guid",        limit: 255
     t.integer  "establishment_id",   limit: 4
     t.integer  "beer_id",            limit: 4
+    t.integer  "report_count",       limit: 4
     t.datetime "last_report_update"
   end
 
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer  "establishment_id",   limit: 4
     t.integer  "beer_id",            limit: 4
     t.integer  "status",             limit: 1
+    t.integer  "report_countdown",   limit: 4
     t.integer  "reported_out_count", limit: 4
     t.datetime "last_out_update"
   end
