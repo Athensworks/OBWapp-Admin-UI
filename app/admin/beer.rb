@@ -60,4 +60,8 @@ ActiveAdmin.register Beer do
     f.actions
   end
 
+  action_item :new, only: [:show, :edit] do
+    link_to "New Beer", new_admin_beer_path
+  end
+
 end
