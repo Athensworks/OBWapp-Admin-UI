@@ -15,6 +15,16 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
         
+        panel "User Stats" do
+          li "Total unique users: #{Like.select(:device_guid).distinct.count}"
+
+          (2..9).map do |multiplier|
+            beginning = multiplier * 10
+            ending    = beginning + 9
+            li "Users between #{beginning} and #{ending}: #{ Like.where(age: beginning..ending).select(:device_guid).distinct.count }"
+          end.join
+        end
+
         panel "Beer Status" do
           ul do
             li link_to "Total Untapped Beers: #{Status.untapped.count}", admin_statuses_path(scope: 'untapped')
