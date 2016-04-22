@@ -11,6 +11,13 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
+$skinLogo: none;
+@import "active_skin";
+
+#header h1.site_title {
+  text-indent: 0px;
+}
+
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //

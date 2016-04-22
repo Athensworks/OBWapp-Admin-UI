@@ -8,9 +8,10 @@ default: &default
   adapter: mysql2
   encoding: utf8
   secure_auth: false
-  
+
 development:
   <<: *default
+  adapter: mysql2
   database: <%= ENV["DB_NAME"] || "obwapp-dev" %>
   username: <%= ENV["DB_USERNAME"] || `whoami` %>
   password: <%= ENV["DB_PASSWORD"] || "" %>
@@ -28,9 +29,9 @@ production:
   host: <%= ENV["DB_HOST"] || "localhost" %>
   port: <%= ENV["DB_PORT"] || 3306 %>
 
-  
+
 test:
   <<: *default
-  adapter: sqlite
+  adapter: sqlite3
   database: db/test.sqlite3
 
