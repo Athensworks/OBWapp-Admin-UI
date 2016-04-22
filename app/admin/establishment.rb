@@ -1,12 +1,12 @@
 ActiveAdmin.register Establishment do
   permit_params :name, :lat, :lon, :address
 
-  show do      
+  show do
     attributes_table do
       row :name
+      row :address
       row :lat
       row :lon
-      row :address
       row :map do |e|
         text_node google_map(e.lat, e.lon)
       end
@@ -14,9 +14,12 @@ ActiveAdmin.register Establishment do
   end
 
   form do |f|
-    f.inputs "Beers" do
+    f.inputs "Establishment" do
       f.input :name
       f.input :address
+      f.input :lat
+      f.input :lon
+      f.input :description, input_html: { rows: 5 }
     end
 
     f.actions
