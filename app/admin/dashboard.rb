@@ -21,7 +21,7 @@ ActiveAdmin.register_page "Dashboard" do
           (2..9).map do |multiplier|
             beginning = multiplier * 10
             ending    = beginning + 9
-            li "Users between #{beginning} and #{ending}: #{ Like.where(age: beginning..ending).select(:device_guid).distinct.count }"
+            # li "Users between #{beginning} and #{ending}: #{ Like.where(age: beginning..ending).select(:device_guid).distinct.count }"
           end.join
         end
 

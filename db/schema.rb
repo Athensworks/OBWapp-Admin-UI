@@ -11,29 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160422023010) do
 
   create_table "beers", force: :cascade do |t|
     t.string  "name",            limit: 100
-    t.string  "brewery",         limit: 100
     t.integer "ibu",             limit: 2
     t.float   "abv",             limit: 24
-    t.boolean "limited_release", limit: 1
+    t.boolean "limited_release"
     t.text    "description",     limit: 65535
-    t.string  "rate_beer_id",    limit: 64
+    t.integer "brewery_id",      limit: 4
+  end
+
+  create_table "breweries", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+    t.string   "addresses",   limit: 255
+    t.float    "lat",         limit: 24
+    t.float    "lon",         limit: 24
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "establishments", force: :cascade do |t|
-    t.string "name",    limit: 100
-    t.float  "lat",     limit: 24
-    t.float  "lon",     limit: 24
-    t.string "address", limit: 100
+    t.string "name",        limit: 100
+    t.float  "lat",         limit: 24
+    t.float  "lon",         limit: 24
+    t.string "address",     limit: 100
+    t.text   "description", limit: 65535
+  end
+
+  create_table "futuredata", force: :cascade do |t|
+    t.float    "lat",         limit: 24
+    t.float    "lon",         limit: 24
+    t.string   "device_guid", limit: 255
+    t.integer  "beer_id",     limit: 4
+    t.integer  "age",         limit: 2
+    t.integer  "like_type",   limit: 1
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "likes", force: :cascade do |t|
     t.string  "device_guid", limit: 255
     t.integer "beer_id",     limit: 4
-    t.integer "age",         limit: 1
     t.integer "like_type",   limit: 1
   end
 
