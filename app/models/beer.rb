@@ -1,6 +1,9 @@
 class Beer < ActiveRecord::Base
   has_many :statuses, dependent: :destroy
   has_many :establishments, through: :statuses
+  has_many :favorites, -> { where(:like_type => 2) }, class_name: "Like"
+  has_many :tastes, -> { where(:like_type => 1) }, class_name: "Like"
+
   belongs_to :brewery
 
   def available_establishments

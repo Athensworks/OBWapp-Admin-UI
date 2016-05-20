@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422032313) do
+ActiveRecord::Schema.define(version: 20160520034603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,9 +55,12 @@ ActiveRecord::Schema.define(version: 20160422032313) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.string  "device_guid", limit: 255
-    t.integer "beer_id"
-    t.integer "like_type",   limit: 2
+    t.string   "device_guid", limit: 255
+    t.integer  "beer_id"
+    t.integer  "like_type",   limit: 2
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.boolean  "state",                   null: false
   end
 
   create_table "reportstate", id: false, force: :cascade do |t|
