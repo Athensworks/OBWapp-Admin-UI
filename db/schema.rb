@@ -13,64 +13,67 @@
 
 ActiveRecord::Schema.define(version: 20160422032313) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "beers", force: :cascade do |t|
     t.string  "name",            limit: 100
     t.integer "ibu",             limit: 2
-    t.float   "abv",             limit: 24
+    t.float   "abv"
     t.boolean "limited_release"
-    t.text    "description",     limit: 65535
-    t.integer "brewery_id",      limit: 4
+    t.text    "description"
+    t.integer "brewery_id"
   end
 
   create_table "breweries", force: :cascade do |t|
     t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
+    t.text     "description"
     t.string   "address",     limit: 255
-    t.float    "lat",         limit: 24
-    t.float    "lon",         limit: 24
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.float    "lat"
+    t.float    "lon"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "establishments", force: :cascade do |t|
     t.string "name",        limit: 100
-    t.float  "lat",         limit: 24
-    t.float  "lon",         limit: 24
+    t.float  "lat"
+    t.float  "lon"
     t.string "address",     limit: 100
-    t.text   "description", limit: 65535
+    t.text   "description"
   end
 
   create_table "futuredata", force: :cascade do |t|
-    t.float    "lat",         limit: 24
-    t.float    "lon",         limit: 24
+    t.float    "lat"
+    t.float    "lon"
     t.string   "device_guid", limit: 255
-    t.integer  "beer_id",     limit: 4
+    t.integer  "beer_id"
     t.integer  "age",         limit: 2
-    t.integer  "like_type",   limit: 1
+    t.integer  "like_type",   limit: 2
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
 
   create_table "likes", force: :cascade do |t|
     t.string  "device_guid", limit: 255
-    t.integer "beer_id",     limit: 4
-    t.integer "like_type",   limit: 1
+    t.integer "beer_id"
+    t.integer "like_type",   limit: 2
   end
 
   create_table "reportstate", id: false, force: :cascade do |t|
     t.string   "device_guid",        limit: 255
-    t.integer  "establishment_id",   limit: 4
-    t.integer  "beer_id",            limit: 4
-    t.integer  "report_count",       limit: 4
+    t.integer  "establishment_id"
+    t.integer  "beer_id"
+    t.integer  "report_count"
     t.datetime "last_report_update"
   end
 
   create_table "statuses", force: :cascade do |t|
-    t.integer  "establishment_id",   limit: 4
-    t.integer  "beer_id",            limit: 4
-    t.integer  "status",             limit: 1
-    t.integer  "report_countdown",   limit: 4
-    t.integer  "reported_out_count", limit: 4
+    t.integer  "establishment_id"
+    t.integer  "beer_id"
+    t.integer  "status",             limit: 2
+    t.integer  "report_countdown"
+    t.integer  "reported_out_count"
     t.datetime "last_out_update"
   end
 

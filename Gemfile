@@ -27,7 +27,7 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'active_skin'
 gem 'devise'
 
-gem 'mysql2'
+gem 'pg'
 
 gem 'geocoder'
 # Use ActiveModel has_secure_password
@@ -42,7 +42,6 @@ gem 'rollbar', '~> 2.8.3'
 
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
 end
 
 group :development, :test do
@@ -54,8 +53,6 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   # gem 'spring'
-
-  gem 'sqlite3'
 
   gem 'dotenv-rails'
 end
