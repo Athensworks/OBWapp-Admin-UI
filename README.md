@@ -6,10 +6,7 @@ ActiveAdmin-based web interface for administering the Ohio Brew Week backend
 
 Need to set some environment variables:
 
-* `ADMIN_USERNAME=`
-* `ADMIN_PASSWORD=`
-* `DB_NAME=`
-* `DB_USERNAME=`
-* `DB_PASSWORD=`
-* `DB_HOST=`
-* `DB_PORT=`
+* `ADMIN_USERNAME=` (required)
+* `ADMIN_PASSWORD=` (required)
+
+`bin/rake db:create db:schema:load # we have tons of non-migration based changes, so just use schema load to get started`
