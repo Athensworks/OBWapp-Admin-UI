@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624005707) do
+ActiveRecord::Schema.define(version: 20160624020106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 20160624005707) do
     t.integer  "beer_id"
     t.integer  "status",             limit: 2
     t.integer  "report_countdown"
-    t.integer  "reported_out_count"
+    t.integer  "reported_out_count",           default: 0
     t.datetime "last_out_update"
   end
 

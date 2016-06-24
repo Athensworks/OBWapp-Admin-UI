@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # TODO
   get 'establishments', to: "establishments#index"
   get '/establishment/:establishment_id/beer_statuses', to: "beer_statuses#index"
-  # put '/establishment/:establishment_id/beer/:beer_id'
+  put '/establishment/:establishment_id/beer/:beer_id', to: "beers#update"
 
   root to: 'admin/dashboard#index'
 
