@@ -25,20 +25,27 @@ class BeersController < ApiController
 
   def update
     status = Status.find_by!(establishment_id: params[:establishment_id], beer_id: params[:beer_id])
-    request_payload = JSON.parse request.body.read, symbolize_names: true
 
-    raise StatusNotAcceptable unless request_payload[:status]
-    raise DeviceGuidAlreadyReported unless ReportState.where(device_guid: request_payload[:device_guid], beer_id: params[:beer_id], establishment_id: params[:establishment_id]).count.zero?
+    report_state_params = {device_guid: params[:device_guid], beer_id: params[:beer_id], establishment_id: params[:establishment_id]}
+    raise StatusNotAcceptable unless params[:status].present?
+    raise DeviceGuidAlreadyReported unless ReportState.where(report_state_params).count.zero?
 
-    ReportState.create(device_guid: request_payload[:device_guid], beer_id: params[:beer_id], establishment_id: params[:establishment_id])
-    status.last_out_update=Time.now
-    status.reported_out_count += 1
-    status.status = 4 if status.reported_out_count >= 3 # Empty-reported
-    status.save
+    ReportState.create(report_state_params)
+
+    update_reported_state!(status)
 
     render json: {status: status.status_string, reported_out_count: status.reported_out_count}
 
   rescue StatusNotAcceptable, DeviceGuidAlreadyReported, JSON::JSONError
     render json: {status: status.status_string, reported_out_count: status.reported_out_count}
+  end
+
+  private
+
+  def update_report_state!(status)
+    status.last_out_update     = Time.now
+    status.reported_out_count += 1
+    status.status              = STATUS_OPTIONS["Empty-Reported" if status.reported_out_count >= 3
+    status.save
   end
 end
