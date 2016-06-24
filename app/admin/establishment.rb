@@ -1,6 +1,6 @@
 ActiveAdmin.register Establishment do
   permit_params :name, :lat, :lon, :address
-  active_admin_import
+  active_admin_import validate: true
 
   show do
     attributes_table do

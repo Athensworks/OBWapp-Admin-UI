@@ -1,5 +1,5 @@
 ActiveAdmin.register Beer do
-  active_admin_import
+  active_admin_import validate: true
 
   controller do
     def permitted_params
