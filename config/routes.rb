@@ -7,5 +7,12 @@ Rails.application.routes.draw do
   get 'breweries', to: "breweries#index"
   get 'beers', to: "beers#index"
 
+  # TODO
+  # get 'establishments' to: "establishments#index"
+  # get '/establishment/:establishment_id/beer_statuses'
+  # put '/establishment/:establishment_id/beer/:beer_id'
+
+  root to: 'admin/dashboard#index'
+
   ActiveAdmin.routes(self)
 end
