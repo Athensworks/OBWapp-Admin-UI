@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'activeadmin', github: 'activeadmin'
+gem "active_admin_import" , github: "activeadmin-plugins/active_admin_import"
 gem 'active_skin'
 gem 'devise'
 

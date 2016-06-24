@@ -1,4 +1,6 @@
 ActiveAdmin.register Beer do
+  active_admin_import
+
   controller do
     def permitted_params
       params.permit!
