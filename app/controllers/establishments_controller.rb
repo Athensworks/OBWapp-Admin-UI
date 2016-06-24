@@ -21,11 +21,8 @@ class EstablishmentsController < ApiController
   end
 
   private
-    def log_request
-      FutureData.log JSON.parse(params[:parameters])
-    rescue Exception => e
-      puts "Hit an error"
-      puts e.inspect
+    def log_request     
+      FutureData.log params.permit(:lat, :lon, :device_guid, :age)
     end
 
 end
