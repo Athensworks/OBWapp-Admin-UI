@@ -37,7 +37,12 @@ class LikesController < ApiController
   end
 
   def log_like_for(device_guid:, beer_id:, like_type:, state:)
-    Like.create(device_guid: device_guid, beer_id: beer_id, like_type: like_type, state: state)
+    finder_params = { device_guid: device_guid, beer_id: beer_id, like_type: like_type }
+    if Like.where(finder_params).count.zero? 
+      Like.create(finder_params.merge({state: state}))
+    else
+      Like.where(finder_params).delete_all
+    end
   end
 
   def like_count_for(beer_id:, like_type:)
