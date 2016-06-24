@@ -3,5 +3,7 @@ class Brewery < ActiveRecord::Base
 
   geocoded_by :address, latitude: :lat, longitude: :lon
 
+  default_scope -> { order(:name) }
+
   after_validation :geocode
 end

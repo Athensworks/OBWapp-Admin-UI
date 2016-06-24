@@ -6,6 +6,8 @@ class Beer < ActiveRecord::Base
 
   belongs_to :brewery
 
+  default_scope -> { order(:name) }
+
   def available_establishments
     establishments
   end
