@@ -28,12 +28,7 @@ class LikesController < ApiController
   private
 
   def log_futuredata!
-    FutureData.create beer_id: params[:beer_id],
-                      device_guid: params[:device_guid],
-                      age: params[:age],
-                      lat: params[:lat],
-                      lon: params[:lon],
-                      like_type: params[:like_type]
+    FutureData.log(params)
   end
 
   def log_like_for(device_guid:, beer_id:, like_type:, state:)

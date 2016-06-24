@@ -22,7 +22,7 @@ class EstablishmentsController < ApiController
 
   private
     def log_request     
-      FutureData.log params.permit(:lat, :lon, :device_guid, :age)
+      FutureData.log params
     end
 
 end
