@@ -4,6 +4,7 @@ class BeersController < ApiController
       {
        id: beer.id,
        name: beer.name,
+       ibu: beer.ibu,
        abv: beer.abv,
        brewery: {
          id: beer.brewery.id,

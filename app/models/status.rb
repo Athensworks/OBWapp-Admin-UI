@@ -17,4 +17,8 @@ class Status < ActiveRecord::Base
   def self.status_values
     status_options.invert
   end
+
+  def status_string
+    Status.status_values[status.to_s].downcase
+  end
 end
