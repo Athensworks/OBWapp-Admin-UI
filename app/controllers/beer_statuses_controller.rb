@@ -2,7 +2,7 @@ class BeerStatusesController < ApiController
   def index
     beer_statuses = Status.all.map do |status|
       {
-       id: status.id,
+       id: status.beer.id,
        status: status.status_string
       }
     end
