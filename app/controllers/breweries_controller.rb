@@ -13,7 +13,7 @@ class BreweriesController < ApiController
       }
     end
 
-    render json: breweries
+    render json: { "breweries" => breweries }
   end
 end
 
