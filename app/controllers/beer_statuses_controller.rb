@@ -7,6 +7,6 @@ class BeerStatusesController < ApiController
       }
     end
 
-    render json: beer_statuses
+    render json: { "beer_statuses" => beer_statuses }
   end
 end

@@ -17,11 +17,11 @@ class EstablishmentsController < ApiController
       }
     end
 
-    render json: establishments
+    render json: { "establishments" => establishments }
   end
 
   private
-    def log_request     
+    def log_request
       FutureData.log params
     end
 

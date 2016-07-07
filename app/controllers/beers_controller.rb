@@ -20,7 +20,7 @@ class BeersController < ApiController
       }
     end
 
-    render json: beers
+    render json: { "beers" => beers }
   end
 
   def update
