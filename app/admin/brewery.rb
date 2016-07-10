@@ -14,8 +14,8 @@ ActiveAdmin.register Brewery do
       row :lat
       row :lon
       row :description
-      row :map do |e|
-        text_node google_map(e.lat, e.lon)
+      row :map do |b|
+        text_node google_map(b.lat, b.lon)
       end
     end
   end
