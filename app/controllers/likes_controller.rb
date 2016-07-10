@@ -66,7 +66,7 @@ class LikesController < ApiController
   def render_rating_response_for(beer_id:)
     render json: {
       beer_id: beer_id,
-      rating: Rating.where(beer_id: beer_id).average(:value)
+      rating: Rating.for_beer(beer_id)
     }
   end
 end
