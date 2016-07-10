@@ -13,6 +13,9 @@ ActiveAdmin.register Beer do
     column :brewery
     column :ibu
     column :abv
+    column :rating do |b|
+      Rating.for_beer(b)
+    end
     column :limited_release
     column :description do |b|
       truncate(b.description, length: 50)
@@ -27,6 +30,9 @@ ActiveAdmin.register Beer do
         row :brewery
         row :ibu
         row :abv
+        row :rating do |b|
+          Rating.for_beer(b)
+        end
         row :description
         row :limited_release
       end
