@@ -1,6 +1,8 @@
 ActiveAdmin.register Brewery do
   active_admin_import validate: true
 
+  config.sort_order = 'name_asc'
+
   controller do
     def permitted_params
       params.permit!
