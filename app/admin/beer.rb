@@ -14,7 +14,9 @@ ActiveAdmin.register Beer do
     column :ibu
     column :abv
     column :limited_release
-    column :description
+    column :description do |b|
+      truncate(b.description, length: 50)
+    end
     actions
   end
 
@@ -25,6 +27,7 @@ ActiveAdmin.register Beer do
         row :brewery
         row :ibu
         row :abv
+        row :description
         row :limited_release
       end
     end
