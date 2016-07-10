@@ -8,6 +8,7 @@ ActiveAdmin.register Establishment do
       row :address
       row :lat
       row :lon
+      row :description
       row :map do |e|
         text_node google_map(e.lat, e.lon)
       end
@@ -24,6 +25,18 @@ ActiveAdmin.register Establishment do
     end
 
     f.actions
+  end
+
+  index do
+    id_column
+    column :name
+    column :address
+    column :lat
+    column :lon
+    column :description do |e|
+      truncate(e.description, length: 50)
+    end
+    actions
   end
 
 end
