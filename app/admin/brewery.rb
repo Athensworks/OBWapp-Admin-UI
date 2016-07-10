@@ -13,6 +13,7 @@ ActiveAdmin.register Brewery do
       row :address
       row :lat
       row :lon
+      row :description
       row :map do |e|
         text_node google_map(e.lat, e.lon)
       end
@@ -29,6 +30,16 @@ ActiveAdmin.register Brewery do
     end
 
     f.actions
+  end
+
+  index do
+    id_column
+    column :name
+    column :address
+    column :description do |b|
+      truncate(b.description, length: 50)
+    end
+    actions
   end
 
 end
