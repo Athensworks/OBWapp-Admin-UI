@@ -1,5 +1,8 @@
 ActiveAdmin.register Brewery do
-  active_admin_import validate: true
+  active_admin_import validate: true,
+                      before_batch_import: ->(importer) {
+                        Brewery.delete_all(id: importer.values_at('id'))
+                      }
 
   config.sort_order = 'name_asc'
 

@@ -11,18 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624051059) do
+ActiveRecord::Schema.define(version: 20160712025733) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "beers", force: :cascade do |t|
-    t.string  "name",            limit: 100
-    t.integer "ibu",             limit: 2
-    t.float   "abv"
-    t.boolean "limited_release"
-    t.text    "description"
-    t.integer "brewery_id"
+    t.string   "name",            limit: 100
+    t.integer  "ibu",             limit: 2
+    t.float    "abv"
+    t.boolean  "limited_release"
+    t.text     "description"
+    t.integer  "brewery_id"
+    t.string   "untappd_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "breweries", force: :cascade do |t|
@@ -36,11 +39,13 @@ ActiveRecord::Schema.define(version: 20160624051059) do
   end
 
   create_table "establishments", force: :cascade do |t|
-    t.string "name",        limit: 100
-    t.float  "lat"
-    t.float  "lon"
-    t.string "address",     limit: 100
-    t.text   "description"
+    t.string   "name",        limit: 100
+    t.float    "lat"
+    t.float    "lon"
+    t.string   "address",     limit: 100
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "futuredata", force: :cascade do |t|

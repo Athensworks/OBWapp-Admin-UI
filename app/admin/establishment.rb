@@ -1,6 +1,9 @@
 ActiveAdmin.register Establishment do
   permit_params :name, :lat, :lon, :address
-  active_admin_import validate: true
+  active_admin_import validate: true,
+                      before_batch_import: ->(importer) {
+                        Establishment.delete_all(id: importer.values_at('id'))
+                      }
 
   config.sort_order = 'name_asc'
 

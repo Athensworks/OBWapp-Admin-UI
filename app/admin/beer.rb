@@ -35,6 +35,9 @@ ActiveAdmin.register Beer do
         row :rating do |b|
           Rating.for_beer(b)
         end
+        row :untappd_url do |b|
+          link_to b.untappd_url if b.untappd_url.present?
+        end
         row :description
         row :limited_release
       end
@@ -58,6 +61,7 @@ ActiveAdmin.register Beer do
       f.input :ibu
       f.input :abv
       f.input :limited_release
+      f.input :untappd_url
       f.input :description, input_html: { rows: 5 }
     end
 
