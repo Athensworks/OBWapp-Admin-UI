@@ -41,6 +41,8 @@ gem 'unicorn'
 # gem 'capistrano-rails', group: :development
 gem 'rollbar', '~> 2.8.3'
 gem 'oj', '~> 2.12.14'
+gem 'newrelic_rpm'
+
 
 group :production do
   gem 'rails_12factor'
