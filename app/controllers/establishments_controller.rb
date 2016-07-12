@@ -7,7 +7,7 @@ class EstablishmentsController < ApiController
        id: establishment.id,
        address: establishment.address,
        beer_statuses: establishment.statuses.map do |status|
-          { id: status.id,
+          { id: status.beer.id,
             status: status.status_string
           }
        end,
