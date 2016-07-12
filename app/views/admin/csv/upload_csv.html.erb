@@ -1,0 +1,19 @@
+<%= form_for :dump, url: import_csv_admin_beers_path, method: :post, html: { multipart: true } do |f| %>
+  <table>
+    <tr>
+      <td>
+        <label for="dump_file">
+          FILE
+        </label>
+      </td>
+      <td>
+        <%= f.file_field :file %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= submit_tag 'Import' %>
+      </td>
+    </tr>
+  </table>
+<% end %>

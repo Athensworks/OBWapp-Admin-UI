@@ -1,5 +1,18 @@
 ActiveAdmin.register Beer do
-  active_admin_import validate: true
+
+  action_item only: :index do
+    link_to 'Import Beer', action: 'import'
+  end
+
+  collection_action :import do
+    render "admin/csv/upload_csv"
+  end
+
+  collection_action :import_csv, method: :post do
+    BeerCsv.convert_save(params[:dump][:file])
+
+    redirect_to action: :index, flash: "CSV imported successfully!"
+  end
 
   config.sort_order = 'name_asc'
 
