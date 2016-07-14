@@ -25,7 +25,7 @@ class LikesController < ApiController
   def rate
     device_guid = params[:device_guid]
     beer_id     = params[:beer_id]
-    value       = params[:value]
+    value       = params[:value].to_i
 
     log_rating_for(device_guid: device_guid, beer_id: beer_id, value: value)
     render_rating_response_for(beer_id: beer_id)
@@ -47,8 +47,16 @@ class LikesController < ApiController
   end
 
   def log_rating_for(device_guid:, beer_id:, value:)
-    rating = Rating.find_or_create_by(device_guid: device_guid, beer_id: beer_id)
-    rating.update_attributes(value: value)
+    raise "Value not accepted" unless [-1, 0, 1].include? value
+
+    if value == 0
+      Rating.delete_all(device_guid: device_guid, beer_id: beer_id)
+    else
+      rating = Rating.find_or_create_by(device_guid: device_guid, beer_id: beer_id)
+      rating.update_attributes(value: value)
+      rating
+    end
+
   end
 
   def like_count_for(beer_id:, like_type:)
