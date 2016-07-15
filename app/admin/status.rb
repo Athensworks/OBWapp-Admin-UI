@@ -7,6 +7,9 @@ ActiveAdmin.register Status do
     id_column
     column :establishment
     column :beer
+    column :brewery do |s|
+      s.beer.brewery.try(:name)
+    end
     column :status do |s|
       status_tag Status.status_values[s.status.to_s]
     end
