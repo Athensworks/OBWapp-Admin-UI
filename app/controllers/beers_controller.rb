@@ -27,16 +27,13 @@ class BeersController < ApiController
     status = Status.find_by!(establishment_id: params[:establishment_id], beer_id: params[:beer_id])
 
     report_state_params = {device_guid: params[:device_guid], beer_id: params[:beer_id], establishment_id: params[:establishment_id]}
-    raise StatusNotAcceptable unless params[:status].present?
     raise DeviceGuidAlreadyReported unless ReportState.where(report_state_params).count.zero?
 
     ReportState.create(report_state_params)
 
     update_reported_state!(status)
 
-    render json: {status: status.status_string, reported_out_count: status.reported_out_count}
-
-  rescue StatusNotAcceptable, DeviceGuidAlreadyReported, JSON::JSONError
+  ensure
     render json: {status: status.status_string, reported_out_count: status.reported_out_count}
   end
 
