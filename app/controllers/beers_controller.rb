@@ -42,7 +42,7 @@ class BeersController < ApiController
 
   private
 
-  def update_report_state!(status)
+  def update_reported_state!(status)
     status.last_out_update     = Time.now
     status.reported_out_count += 1
     status.status              = STATUS_OPTIONS["Empty-Reported"] if status.reported_out_count >= 3
