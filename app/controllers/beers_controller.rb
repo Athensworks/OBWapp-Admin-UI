@@ -3,7 +3,10 @@ class DeviceGuidAlreadyReported < StandardError; end
 
 class BeersController < ApiController
   def index
-    beers = Beer.includes(:tastes, :favorites, :brewery).map do |beer|
+    beer_ids_at_locations = Status.pluck(:beer_id).uniq
+    all_beers = Beer.where(id: beer_ids_at_locations).includes(:tastes, :favorites, :brewery)
+
+    beers = all_beers.map do |beer|
       {
        id: beer.id,
        name: beer.name,
